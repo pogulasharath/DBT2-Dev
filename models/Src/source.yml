@@ -1,0 +1,22 @@
+version: 2
+#let's define all the sources here
+
+sources:
+  - name: airbnb
+    database: airbnb
+    schema: raw
+    tables:
+      - name: listings
+        identifier: raw_listings
+      - name: hosts
+        identifier: raw_hosts
+      - name: reviews
+        identifier: raw_reviews
+        loaded_at_field: date
+        freshness:
+          error_after:
+            count: 1
+            period: hour
+          warn_after:
+            count: 24
+            period: hour
