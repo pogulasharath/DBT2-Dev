@@ -1,7 +1,7 @@
 {% snapshot scd_raw_hosts %}
     {{
         config(
-            target_schema="DEV",
+            target_schema="DBT_SPOGULA",
             strategy="timestamp",
             unique_key="id",
             updated_at="updated_at",
