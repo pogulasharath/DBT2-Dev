@@ -1,0 +1,78 @@
+sources:
+  - name: dc_hc_sales
+    database: DBT_TEST
+    schema: bronze_dc_sales
+    tables:
+      - name: sell
+      - name: time_ord_dim
+      - name: pharmacy
+      - name: doctor
+        columns:
+          - name: ssn
+            tests:
+              - not_null
+              - unique             
+      - name: cnf_customer_dim
+        columns:
+          - name: customer_id
+            tests:
+              - not_null
+              - unique
+      - name: emp_dim
+        columns:
+          - name: emp_id
+            tests:
+              - not_null
+              - unique
+      - name: patient
+        columns:
+          - name: ssn
+            tests:
+              - not_null
+              - unique
+      - name: parma_co
+        columns:
+          - name: pharma_id
+            tests:
+              - not_null
+              - unique
+      - name: prescription
+        columns:
+          - name: ssn
+            tests:
+              - not_null
+          - name: phy_ssn
+            tests:
+              - not_null
+      - name: contract
+        columns:
+          - name: name
+            tests:
+              - not_null
+          - name: pharma_id
+            tests:
+              - not_null
+      - name: make_drug
+        columns:
+          - name: trade_name
+            tests:
+              - not_null
+          - name: pharma_id
+            tests:
+              - not_null          
+# defining dc_pharma_Tables              
+      - name: product_list_dim
+        columns:
+          - name: pord_id #prod_id
+            tests:
+              - not_null
+              - unique
+      - name: sales_fact
+        columns:
+          - name: pord_id #prod_id
+            tests:
+              - not_null
+              - unique
+              
+            
+         
