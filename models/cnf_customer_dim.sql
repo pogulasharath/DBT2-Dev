@@ -1,3 +1,3 @@
 
 {{ config(materialized='table')}}
-select * from {{ source('dc_hc_sales', 'cnf_customer_dim') }}
+select * from {{ source('bronze_dc_sales', 'cnf_customer_dim') }}

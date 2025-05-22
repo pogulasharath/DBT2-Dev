@@ -1,5 +1,5 @@
 sources:
-  - name: dc_hc_sales
+  - name: bronze_dc_sales
     database: DBT_TEST
     schema: bronze_dc_sales
     tables:
@@ -18,6 +18,8 @@ sources:
             tests:
               - not_null
               - unique
+              - accepted_values:
+                  values: [10001,10002,10003,10004,10005]
       - name: emp_dim
         columns:
           - name: emp_id
@@ -30,6 +32,10 @@ sources:
             tests:
               - not_null
               - unique
+          - name: gender
+            tests:
+               - accepted_values:
+                  values: ['F','N']
       - name: parma_co
         columns:
           - name: pharma_id
