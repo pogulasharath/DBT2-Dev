@@ -1,14 +1,15 @@
+ -- incremental_strategy='delete+insert',
+ --post_hook=[
+          --  "update {{this}} set is_active ='N' 
+        --where ssn not in (select ssn from {{ source('bronze_dc_sales', 'doctor') }})"
+       -- ],
 {{
     config(
         materialized="incremental",
         schema="gold",
         unique_key="ssn",
-        on_schema_change="sync_all_columns",
-        merge_update_columns= ['speciality'],
-        post_hook=[
-            "update {{this}} set is_active ='N' 
-        where ssn not in (select ssn from {{ source('bronze_dc_sales', 'doctor') }})"
-        ],
+        merge_update_columns= ['speciality','YEAR_EXPERIENCE'],
+        
     )
 }}
 

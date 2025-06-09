@@ -11,7 +11,10 @@ sources:
           - name: ssn
             tests:
               - not_null
-              - unique             
+              - unique 
+              - length:
+                 req_len: 7
+
       - name: cnf_customer_dim
         columns:
           - name: customer_id
