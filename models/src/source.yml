@@ -1,0 +1,22 @@
+sources:
+  - name: AIRBNB
+    database: AIRBNB
+    schema: customers
+    tables:
+      - name: customer_purchases
+        identifier: customer_purchases
+        columns:
+          - name: customer_id
+            tests:
+              - unique
+              - not_null
+                  
+      - name: sales_data
+        identifier: sales_data
+      - name: inventory_data
+        identifier: inventory_data
+      
+      - name: customer_activity
+        identifier: customer_activity
+          
+      
